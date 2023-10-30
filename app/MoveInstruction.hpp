@@ -10,7 +10,6 @@ class MoveInstruction : public Statement
 public:
 	MoveInstruction(const std::string & dest, const std::string & src);
 	void execute(ProgramState * state) const override;
-	int checkSource(ProgramState * state, std::string source) const;
 
 private:
 	std::string destination;
