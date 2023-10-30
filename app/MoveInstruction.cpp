@@ -9,6 +9,7 @@ MoveInstruction::MoveInstruction(const std::string & dest, const std::string & s
 void MoveInstruction::execute(ProgramState * state) const
 {
     // Get register index
+    std::cout << destination << " " << source << std::endl;
     int registerIndex = state->getRegisterIndex(destination);
     // Check source
     int registerIndex2 = checkSource(state, source);
