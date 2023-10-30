@@ -11,6 +11,9 @@ public:
 	MoveInstruction(const std::string & dest, const std::string & src);
 	void execute(ProgramState * state) const override;
 
+private:
+	std::string destination;
+	std::string source;
 };
 
 

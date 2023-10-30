@@ -32,7 +32,10 @@ void runSimulator(std::istream &in, ProgramState * ps)
     std::stringstream ss;
 
 
+    // Current idea: When reading program, add all instructions from other cpp files into a dictionary, and run it line by line
+    // update: use vectors instead? its like a list, so can index it
 
+    // Read program
     while(  getline(in, line) )
     {
         ss.clear();
@@ -45,6 +48,8 @@ void runSimulator(std::istream &in, ProgramState * ps)
             }
         }
     }
+
+    // Execute here
 
 
 }
