@@ -112,7 +112,7 @@ int ProgramState::getRegisterIndex(std::string registerName)
 }
 
 
-// store source inside register index
+// store dest inside register index
 void ProgramState::storeRegisterValue(int registerIndex, std::string source)
 {
 	int registerIndex2;
@@ -120,10 +120,12 @@ void ProgramState::storeRegisterValue(int registerIndex, std::string source)
     if (isdigit(source[0]))
     {
         registerIndex2 = std::stoi(source);
+		registerVector[registerIndex] = registerIndex2;
     }
+	// If another register, get the value and store it into the initial
     else
     {
         registerIndex2 = getRegisterIndex(source);
+		registerVector[registerIndex] = registerVector[registerIndex2];
     }
-	registerVector[registerIndex] = registerIndex2;
 }
