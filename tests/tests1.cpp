@@ -4,6 +4,7 @@
 #include "MoveInstruction.hpp"
 #include "AddInstruction.hpp"
 #include "SubtractionInstruction.hpp"
+#include "ImulInstruction.hpp"
 #include "CmpInstruction.hpp"
 #include "JmpInstruction.hpp"
 #include "JLInstruction.hpp"

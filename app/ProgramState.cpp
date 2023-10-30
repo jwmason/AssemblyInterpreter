@@ -167,3 +167,22 @@ void ProgramState::subRegisterValue(int registerIndex, std::string source)
 		registerVector[registerIndex] -= registerVector[registerIndex2];
     }
 }
+
+
+// multiply dest and src and store in dest
+void ProgramState::imulRegisterValue(int registerIndex, std::string source)
+{
+	int registerIndex2;
+	// Check if source is a digit, or another register
+    if (isdigit(source[0]))
+    {
+        registerIndex2 = std::stoi(source);
+		registerVector[registerIndex] *= registerIndex2;
+    }
+	// If another register, get the value and store it into the initial
+    else
+    {
+        registerIndex2 = getRegisterIndex(source);
+		registerVector[registerIndex] *= registerVector[registerIndex2];
+    }
+}

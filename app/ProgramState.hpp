@@ -38,6 +38,8 @@ public:
 
 	void subRegisterValue(int registerIndex, std::string source);
 
+	void imulRegisterValue(int registerIndex, std::string source);
+
 private:
 // If you want to add private member variables, you may do so here.
 	std::vector<void(*)()> commandVector; // Holds command functions
