@@ -40,12 +40,19 @@ public:
 
 	void imulRegisterValue(int registerIndex, std::string source);
 
+	void true_less_than();
+	void true_equal_to();
+
+	bool return_less_than();
+	bool return_equal_to();
+
 private:
 // If you want to add private member variables, you may do so here.
 	std::vector<void(*)()> commandVector; // Holds command functions
     std::vector<int> registerVector; // Holds register values
     int counter; // Counter variable
-
+	bool less_than;
+	bool equal_to;
 };
 
 

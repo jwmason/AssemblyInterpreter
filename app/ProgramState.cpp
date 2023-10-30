@@ -5,7 +5,7 @@
 
 
 // Intialize variables to hold commands, registers, and the counter
-ProgramState::ProgramState() : registerVector(16,0), counter(0)
+ProgramState::ProgramState() : registerVector(16,0), counter(0), less_than(false), equal_to(false)
 {
 	std::vector<void(*)()> commandVector;
 }
@@ -185,4 +185,32 @@ void ProgramState::imulRegisterValue(int registerIndex, std::string source)
         registerIndex2 = getRegisterIndex(source);
 		registerVector[registerIndex] *= registerVector[registerIndex2];
     }
+}
+
+
+// Change less than to true
+void ProgramState::true_less_than()
+{
+	less_than = true;
+}
+
+
+// Change equal to to true
+void ProgramState::true_equal_to()
+{
+	equal_to = true;
+}
+
+
+// return less than
+bool ProgramState::return_less_than()
+{
+	return less_than;
+}
+
+
+// return equal to
+bool ProgramState::return_equal_to()
+{
+	return equal_to;
 }
