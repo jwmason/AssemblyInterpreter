@@ -11,6 +11,8 @@ public:
 	IncInstruction(const std::string & reg);
 	void execute(ProgramState * state) const override;
 
+private:
+	std::string destination;
 };
 
 

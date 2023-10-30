@@ -5,6 +5,7 @@
 #include "AddInstruction.hpp"
 #include "SubtractionInstruction.hpp"
 #include "ImulInstruction.hpp"
+#include "IncInstruction.hpp"
 #include "CmpInstruction.hpp"
 #include "JmpInstruction.hpp"
 #include "JLInstruction.hpp"
@@ -136,6 +137,20 @@ TEST_CASE("Multiplication", "[FYI]")
         ImulInstruction si1{"eax", "ebx"};
         si1.execute(&ps);
         REQUIRE(ps.getRegister(0) == 300);
+
+}
+
+
+TEST_CASE("Inc", "[FYI]")
+{
+        ProgramState ps;
+        MoveInstruction m1{"eax", "15"};
+        m1.execute(&ps);
+        REQUIRE(ps.getRegister(0) == 15);
+
+        IncInstruction si1{"eax"};
+        si1.execute(&ps);
+        REQUIRE(ps.getRegister(0) == 16);
 
 }
 
