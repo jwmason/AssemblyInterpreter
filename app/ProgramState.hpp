@@ -32,7 +32,9 @@ public:
 
 	int getRegisterIndex(std::string registerName);
 
-	void storeRegisterValue(int registerIndex, std::string source);
+	void moveRegisterValue(int registerIndex, std::string source);
+
+	void addRegisterValue(int registerIndex, std::string source);
 
 private:
 // If you want to add private member variables, you may do so here.
