@@ -46,6 +46,8 @@ void runSimulator(std::istream &in, ProgramState * ps)
             {
                 ss >> token1 >> token2;
             }
+            // Increment counter
+            ps->addCounter();
         }
     }
 

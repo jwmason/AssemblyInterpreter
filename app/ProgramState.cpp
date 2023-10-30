@@ -241,3 +241,9 @@ void ProgramState::jump_equal_to(int line)
 		counter = line;
 	}
 }
+
+// Increment counter
+void ProgramState::addCounter()
+{
+	counter ++;
+}

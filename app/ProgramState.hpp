@@ -50,6 +50,8 @@ public:
 	void jump_less_than(int line);
 	void jump_equal_to(int line);
 
+	void addCounter();
+
 private:
 // If you want to add private member variables, you may do so here.
 	std::vector<void(*)()> commandVector; // Holds command functions
