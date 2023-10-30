@@ -221,3 +221,23 @@ void ProgramState::jump_unconditionally(int line)
 {
 	counter = line;
 }
+
+
+// Jump if Less than
+void ProgramState::jump_less_than(int line)
+{
+	if (return_less_than())
+	{
+		counter = line;
+	}
+}
+
+
+// Jump if Equal to
+void ProgramState::jump_equal_to(int line)
+{
+	if (return_equal_to())
+	{
+		counter = line;
+	}
+}

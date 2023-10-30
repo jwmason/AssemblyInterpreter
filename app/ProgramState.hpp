@@ -47,6 +47,8 @@ public:
 	bool return_equal_to();
 
 	void jump_unconditionally(int line);
+	void jump_less_than(int line);
+	void jump_equal_to(int line);
 
 private:
 // If you want to add private member variables, you may do so here.
