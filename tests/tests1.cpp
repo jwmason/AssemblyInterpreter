@@ -122,6 +122,24 @@ TEST_CASE("Subtraction", "[FYI]")
 }
 
 
+TEST_CASE("Multiplication", "[FYI]")
+{
+        ProgramState ps;
+        MoveInstruction m1{"eax", "15"};
+        m1.execute(&ps);
+        REQUIRE(ps.getRegister(0) == 15);
+
+        MoveInstruction m2{"ebx", "20"};
+        m2.execute(&ps);
+        REQUIRE(ps.getRegister(1) == 20);
+
+        ImulInstruction si1{"eax", "ebx"};
+        si1.execute(&ps);
+        REQUIRE(ps.getRegister(0) == 300);
+
+}
+
+
 TEST_CASE("CMP1", "[FYI]")
 {
         ProgramState ps;
@@ -157,23 +175,6 @@ TEST_CASE("CMP2", "[FYI]")
 
 }
 
-
-TEST_CASE("CMP", "[FYI]")
-{
-        ProgramState ps;
-        MoveInstruction m1{"eax", "20"};
-        m1.execute(&ps);
-        REQUIRE(ps.getRegister(0) == 20);
-
-        MoveInstruction m2{"ebx", "20"};
-        m2.execute(&ps);
-        REQUIRE(ps.getRegister(1) == 20);
-
-        CmpInstruction si1{"eax", "ebx"};
-        si1.execute(&ps);
-        REQUIRE(ps.return_less_than() == false);
-
-}
 
 // [RequiredAllOperations] does an unconditional jump and the program counter changes appropriately. 
 

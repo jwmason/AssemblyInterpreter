@@ -46,6 +46,8 @@ public:
 	bool return_less_than();
 	bool return_equal_to();
 
+	void jump_unconditionally(int line);
+
 private:
 // If you want to add private member variables, you may do so here.
 	std::vector<void(*)()> commandVector; // Holds command functions

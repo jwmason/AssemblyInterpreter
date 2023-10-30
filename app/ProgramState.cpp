@@ -214,3 +214,10 @@ bool ProgramState::return_equal_to()
 {
 	return equal_to;
 }
+
+
+// Jump unconditionally
+void ProgramState::jump_unconditionally(int line)
+{
+	counter = line;
+}

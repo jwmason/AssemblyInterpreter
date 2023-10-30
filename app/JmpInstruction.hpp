@@ -11,6 +11,8 @@ public:
 	JmpInstruction(const std::string & dst);
 	void execute(ProgramState * state) const override;
 
+private:
+	std::string line;
 };
 
 
