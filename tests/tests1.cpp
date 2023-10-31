@@ -256,7 +256,7 @@ TEST_CASE("StoreAConstantAsAProgram", "[RequiredFullPrograms]")
         ProgramState ps;
         runSimulator(in, &ps);
         REQUIRE(ps.getRegister(0) == 15);
-        REQUIRE(ps.getRegister(1) == 20);
+        REQUIRE(ps.getRegister(1) == 120);
 }
 
 TEST_CASE("MoveAConstantAsAProgram", "[RequiredFullPrograms]")

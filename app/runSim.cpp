@@ -122,17 +122,27 @@ void runSimulator(std::istream &in, ProgramState * ps)
     }
 
     // Execute here
-    // Fix - jumping
     for (ps->getRunningCounter(); ps->getRunningCounter() < commandVector.size(); ps->addCounter())
     {
-        std::cout << ps->getRunningCounter() << std::endl;
         if (commandVector[ps->getRunningCounter()] == nullptr)
         {
             // End program if "END" is reached
             ps->done();
             break;
         }
-        commandVector[ps->getRunningCounter()]->execute(ps);
+        // Check if the instruction is a jump
+        if ((typeid(*commandVector[ps->getRunningCounter()]) == typeid(JmpInstruction)) ||
+        (typeid(*commandVector[ps->getRunningCounter()]) == typeid(JLInstruction)) ||
+        (typeid(*commandVector[ps->getRunningCounter()]) == typeid(JEInstruction)))
+        {
+            // If it's a jump, jump to the line and run it
+            commandVector[ps->getRunningCounter()]->execute(ps);
+            commandVector[ps->getRunningCounter()]->execute(ps);
+        }
+        else
+        {
+            commandVector[ps->getRunningCounter()]->execute(ps);
+        }
     }
 
     // Delete the new object statements
@@ -140,7 +150,6 @@ void runSimulator(std::istream &in, ProgramState * ps)
     {
         delete commandVector[i];
     }
-    std::cout << std::endl;
 }
 
 

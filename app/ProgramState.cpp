@@ -1,6 +1,7 @@
 #include <vector>
 #include <stdlib.h>
 #include <iostream>
+#include <string>
 #include "ProgramState.hpp"
 
 

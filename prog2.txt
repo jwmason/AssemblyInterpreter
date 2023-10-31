@@ -1,7 +1,7 @@
 MOV eax 15
 MOV ebx eax
 CMP eax ebx
-JE 5
+JE 6
 ADD eax 100
 MOV ecx 15
 END
