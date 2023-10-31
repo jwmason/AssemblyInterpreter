@@ -5,9 +5,9 @@
 
 
 // Intialize variables to hold commands, registers, and the counter
-ProgramState::ProgramState() : registerVector(16,0), counter(0), less_than(false), equal_to(false)
+ProgramState::ProgramState() : registerVector(16,0), counter_for_return(1), counter_for_running(1), less_than(false), equal_to(false)
 {
-	std::vector<void(*)()> commandVector;
+	std::vector<std::string> commandVector;
 }
 
 
@@ -17,7 +17,14 @@ ProgramState::~ProgramState()
 size_t ProgramState::getCounter() const
 {
 	// Returns current line
-	return counter;
+	return counter_for_return;
+}
+
+
+size_t ProgramState::getRunningCounter() const
+{
+	// Returns current line
+	return counter_for_running;
 }
 
 
@@ -30,7 +37,7 @@ void ProgramState::terminate()
 
 bool ProgramState::done() const
 {
-	return false;
+	return true;
 }
 
 
@@ -219,7 +226,8 @@ bool ProgramState::return_equal_to()
 // Jump unconditionally
 void ProgramState::jump_unconditionally(int line)
 {
-	counter = line;
+	counter_for_return = line;
+	counter_for_running = line - 1;
 }
 
 
@@ -228,7 +236,8 @@ void ProgramState::jump_less_than(int line)
 {
 	if (return_less_than())
 	{
-		counter = line;
+		counter_for_return = line;
+		counter_for_running = line - 1;
 	}
 }
 
@@ -238,12 +247,21 @@ void ProgramState::jump_equal_to(int line)
 {
 	if (return_equal_to())
 	{
-		counter = line;
+		counter_for_return = line;
+		counter_for_running = line - 1;
 	}
+}
+
+
+// Add to command vector
+void ProgramState::addCommand(std::string command)
+{
+	commandVector.push_back(command);
 }
 
 // Increment counter
 void ProgramState::addCounter()
 {
-	counter ++;
+	counter_for_return ++;
+	counter_for_running ++;
 }

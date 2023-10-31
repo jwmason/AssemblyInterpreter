@@ -12,6 +12,7 @@ public:
 	~ProgramState();
 
 	size_t getCounter() const;
+	size_t getRunningCounter() const;
 
 
 	// terminate means quit when something bad happened (e.g., trying to access a non-existent register)
@@ -50,13 +51,16 @@ public:
 	void jump_less_than(int line);
 	void jump_equal_to(int line);
 
+	void addCommand(std::string command);
+
 	void addCounter();
 
 private:
 // If you want to add private member variables, you may do so here.
-	std::vector<void(*)()> commandVector; // Holds command functions
+	std::vector<std::string> commandVector; // Holds command functions
     std::vector<int> registerVector; // Holds register values
-    int counter; // Counter variable
+	int counter_for_return; // Counter return variable
+	int counter_for_running; // Counter variable
 	bool less_than;
 	bool equal_to;
 };
