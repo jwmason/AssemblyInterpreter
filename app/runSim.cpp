@@ -36,10 +36,6 @@ void runSimulator(std::istream &in, ProgramState * ps)
 
     // Create a command Vector to hold the command objects
     std::vector<Statement*> commandVector; //Statement pointer to hold the different class objects
-    // Dummy value for index 0
-    Statement* newCommand = nullptr;
-    newCommand = new MoveInstruction(token1, token2);
-    commandVector.push_back(newCommand);
 
     // Read program
     while(getline(in, line))
@@ -126,22 +122,25 @@ void runSimulator(std::istream &in, ProgramState * ps)
     }
 
     // Execute here
-    // Fix - jumping index is 1 off, 2 -> line 3
-    // Fix - Prog starts on line 1, but here starts on line 0
-    for (ps->getRunningCounter(); ps->getRunningCounter() < commandVector.size() + 1; ps->addCounter())
+    // Fix - jumping
+    for (ps->getRunningCounter(); ps->getRunningCounter() < commandVector.size(); ps->addCounter())
     {
-        if (commandVector[ps->getRunningCounter() - 1] == nullptr)
+        std::cout << ps->getRunningCounter() << std::endl;
+        if (commandVector[ps->getRunningCounter()] == nullptr)
         {
+            // End program if "END" is reached
             ps->done();
             break;
         }
-        std::cout << ps->getRunningCounter() << std::endl;
-        commandVector[ps->getRunningCounter() - 1]->execute(ps);
+        commandVector[ps->getRunningCounter()]->execute(ps);
     }
-    // End program
-    std::cout << commandVector.size() << std::endl;
-    std::cout << std::endl;
 
+    // Delete the new object statements
+    for (unsigned i = 0; i < commandVector.size(); ++i)
+    {
+        delete commandVector[i];
+    }
+    std::cout << std::endl;
 }
 
 

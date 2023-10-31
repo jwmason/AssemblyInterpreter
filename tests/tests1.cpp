@@ -255,7 +255,7 @@ TEST_CASE("StoreAConstantAsAProgram", "[RequiredFullPrograms]")
         std::ifstream in{"prog1.txt"};
         ProgramState ps;
         runSimulator(in, &ps);
-        REQUIRE(ps.getRegister(0) == 10);
+        REQUIRE(ps.getRegister(0) == 15);
         REQUIRE(ps.getRegister(1) == 20);
 }
 

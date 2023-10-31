@@ -7,8 +7,16 @@ ImulInstruction::ImulInstruction(const std::string & dest, const std::string & s
 
 void ImulInstruction::execute(ProgramState * state) const
 {
+    int registerIndex;
     // Get register index
-    int registerIndex = state->getRegisterIndex(destination);
+    if (isdigit(destination[0]))
+    {
+        registerIndex = stoi(destination);
+    }
+    else
+    {
+        registerIndex = state->getRegisterIndex(destination);
+    }
     // Store it into registerVector
     state->imulRegisterValue(registerIndex, source);
 }

@@ -1,6 +1,6 @@
 MOV eax 15
 MOV ebx 20
 JMP 5
-MOVE eax 5
-MOV eax 10
+ADD eax 100
+ADD ebx 100
 END

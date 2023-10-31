@@ -5,7 +5,7 @@
 
 
 // Intialize variables to hold commands, registers, and the counter
-ProgramState::ProgramState() : registerVector(16,0), counter_for_return(1), counter_for_running(1), less_than(false), equal_to(false)
+ProgramState::ProgramState() : registerVector(16,0), counter_for_return(1), counter_for_running(0), less_than(false), equal_to(false)
 {
 	std::vector<std::string> commandVector;
 }
@@ -146,6 +146,7 @@ void ProgramState::addRegisterValue(int registerIndex, std::string source)
     if (isdigit(source[0]))
     {
         registerIndex2 = std::stoi(source);
+		// Check if registerIndex is an index or an actual number
 		registerVector[registerIndex] += registerIndex2;
     }
 	// If another register, get the value and store it into the initial
